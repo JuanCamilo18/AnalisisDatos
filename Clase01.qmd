@@ -1,0 +1,84 @@
+---
+title: "Curso: Análisis de datos"
+author: "Juan C. Panta"
+format:
+  html: 
+    code-fold: true
+editor: visual
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+#library(tidyverse)  # for data wrangling and visualization
+#library(knitr)      # for tables
+#library(openintro)  # for data
+```
+
+## Lectura de datos
+
+En esta seccion se importará datos en formato csv y xlsx, especificamente de las bases de datos: `PelicanStores.csv` y `Datos_personas.xlsx`
+
+Comencemos cargando los paquetes que usaremos para el análisis.
+
+```{r}
+#| label: load-packages2
+#| warning: false
+#| message: false
+
+library(tidyverse)  # for data wrangling and visualization
+library(knitr)      # for tables
+library(readxl)     # for read excel
+```
+
+**Lectura de datos**
+
+Leemos datos de github.
+
+```{r}
+datos <- read.csv("https://raw.githubusercontent.com/JuanCamilo18/AnalisisDatos/main/Datos/PelicanStores.csv", header = T, sep = ";")
+
+datos %>%
+  head() %>%
+  kable(digits = c(0, 0, 0, 2, 0))
+```
+
+### Estadísticas resumidas
+
+@tbl-stats1 muestra estadísticas resumidas básicas para las variables de la base de datos.
+
+```{r}
+#| label: tbl-stats1
+#| tbl-cap: "Estructura de las variables de la bbdd"
+
+datos %>%
+  summary() %>%
+  kable()
+
+datos %>%
+  str() %>%
+  kable()
+```
+
+## Lectura formato excel {#sec-model}
+
+```{r}
+datos2 <- read_xlsx("Datos/Datos_personas.xlsx")
+head(datos2)
+```
+
+Tipos de las variables
+
+```{r}
+str(datos2)
+```
+
+Cambiamos tipo de variable a Id y Edad.
+
+```{r}
+datos2$Id <- as.integer(datos2$Id)
+datos2$Edad <- as.integer(datos2$Edad)
+# Comprobamos
+str(datos2)
+```

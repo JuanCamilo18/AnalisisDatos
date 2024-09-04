@@ -1,0 +1,94 @@
+---
+title: "Curso: Análisis de datos"
+author: "Juan C. Panta"
+format:
+  html: 
+    code-fold: true
+editor: visual
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+#library(tidyverse)  # for data wrangling and visualization
+#library(knitr)      # for tables
+#library(openintro)  # for data
+```
+
+## Clase 02: Analisis Descriptivo de datos
+
+En este análisis, construimos un análisis estadístico de los datos de `Estudiantes.csv` que contiene informacion sobre el desempeño de unos estudiantes de secundaria.
+
+Comencemos cargando los paquetes que usaremos para el análisis.
+
+```{r}
+#| label: load-packages2
+#| warning: false
+#| message: false
+
+library(tidyverse)  # for data wrangling and visualization
+library(knitr)      # for tables
+library(readxl)     # for read excel
+
+```
+
+**Lectura de datos**
+
+Leemos datos en archivo csv.
+
+```{r}
+estudiantes <- read.csv("Datos/student-mat.csv", header = T, sep = ";")
+
+estudiantes %>%
+  head() %>%
+  kable()
+```
+
+### Tipo de las variables
+
+@tbl-stats1 muestra el tipo de las variables de la base de datos.
+
+```{r}
+#| label: tbl-stats1
+#| tbl-cap: "Estructura de las variables de la bbdd"
+
+estudiantes %>%
+  sapply(class) %>%
+  kable()
+
+estudiantes %>%
+  str() %>%
+  kable()
+```
+
+### Estadísticas resumidas
+
+@tbl-stats2 muestra estadísticas resumidas básicas para las variables de la base de datos.
+
+```{r}
+#| label: tbl-stats2
+#| tbl-cap: "Estructura de las variables de la bbdd"
+
+estudiantes %>%
+  summary() %>%
+  kable()
+```
+
+## Análisis univariado de datos {#sec-aud}
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+table(estudiantes$Mjob) %>%
+  kable()
+```
+
+Tipos de las variables
+
+```{r}
+table(estudiantes$Fjob) %>%
+  kable()
+```
+
+Cambiamos tipo de variable a Id y Edad.
