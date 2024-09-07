@@ -91,4 +91,60 @@ table(estudiantes$Fjob) %>%
   kable()
 ```
 
-Cambiamos tipo de variable a Id y Edad.
+Tabla de frecuencias relativas.
+
+```{r}
+prop.table(table(estudiantes$Mjob))
+```
+
+Grafico de barras.
+
+```{r}
+barplot(table(estudiantes$Mjob))
+```
+
+```{r}
+barplot(table(estudiantes$Mjob),
+        main = "Trabajo de la madre",
+        xlab = "Mjob",
+        ylab = "frecuencias",
+        col = "blue")
+```
+
+### Gráfico de Tortas
+
+```{r}
+pie(table(estudiantes$Mjob), col = 1:5, main = "Trabajo de la madre")
+```
+
+**Variable edad**
+
+```{r}
+table(cut(estudiantes$age,4))
+```
+
+### Histograma
+
+```{r}
+hist(estudiantes$age)
+```
+
+agregamos la funcion de densidad estimada
+
+```{r}
+hist(estudiantes$G1,main="Calificacion de primer periodo", col="green",
+     xlab="G1", ylab="Frecuencias",
+     freq=F)
+lines(density(estudiantes$G1), col="red")
+```
+
+
+
+
+
+
+
+
+
+
+
