@@ -139,12 +139,37 @@ lines(density(estudiantes$G1), col="red")
 ```
 
 
+**Segmentando**
+
+¿como podemos segmentar age en funcion de guardian (tutor)
+
+```{r}
+age_m <- estudiantes$age[estudiantes$guardian=="mother"]
+age_f <- estudiantes$age[estudiantes$guardian=="father"]
+age_o <- estudiantes$age[estudiantes$guardian=="other"]
+```
 
 
+**Estadísticas básicas de los datos**
 
+```{r}
+summary(estudiantes$age)
+```
 
+**Varianza y Desviación estandar**
 
+```{r}
+# varianza
+var(estudiantes$age)
+# desviacion estandar
+sd(estudiantes$age)
+```
 
+**Coeficiente de Asimetria y Kurtosis**
 
-
+```{r}
+library(moments)
+skewness(estudiantes$age)
+kurtosis(estudiantes$age)
+```
 
