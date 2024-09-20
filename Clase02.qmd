@@ -170,6 +170,34 @@ sd(estudiantes$age)
 ```{r}
 library(moments)
 skewness(estudiantes$age)
-kurtosis(estudiantes$age)
+kurtosis(estudiantes$age) # criterio centrado en 3
 ```
+
+
+### Resumen de edades por grupo de niveles de variable guardian
+
+```{r}
+summary(age_m)
+summary(age_f)
+summary(age_o)
+```
+
+Graficamos los histogramas
+
+```{r}
+hist(estudiantes$age, breaks= seq(14,22,by=1),
+     main = "Histogramas de edades",
+     xlab = "Edades", ylab = "Frecuencias",
+     ylim = c(0,120))
+```
+
+
+```{r}
+hist(age_m, breaks=seq(14,22,by=1), col=rgb(1,0,0,0.8),
+     xlim=c(14,22), ylim=c(0,120), xlab = "Edad",
+     main = "Histogramas de edades", ylab = "Frecuencias")
+hist(age_f, breaks=seq(14,22,by=1), col=rgb(0,0,1,0.6),
+     xlim=c(14,22), ylim=c(0,120), add = T)
+```
+
 
